@@ -3,3 +3,76 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  background-color: black;
+  padding: 4px;
+  color: white;
+}
+
+.nav-bar h1 {
+  text-align: center;
+}
+
+.nav-bar ul {
+  list-style-type: none;
+}
+
+.nav-bar .active {
+  border: 2px solid white;
+  border-radius: 20px 20px;
+  background-color: orangered;
+}
+
+.nav-bar li {
+  margin-bottom: 40px;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.nav-bar a:hover {
+  background-color: orangered;
+}
+
+.nav-bar li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 20px 20px;
+  transition: background-color 0.7s;
+}
+
+.nav-bar li:hover:last-child {
+  background-color: red;
+  color: white;
+}
+
+.nav-bar li:last-child {
+  color: red;
+  transition: color 0.4s;
+  border-radius: 20px 20px;
+  padding: 10px;
+}
+
+.nav-bar i {
+  margin-right: 5px;
+}
+
+.separator {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  border-bottom: 3px solid orangered;
+}
+
+.content {
+  padding-left: 22%;
+}

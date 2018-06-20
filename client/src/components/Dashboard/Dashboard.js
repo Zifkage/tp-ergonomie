@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import client from '../../Client';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Route, Switch, NavLink } from 'react-router-dom';
+
 
 class Dashboard extends Component {
 
@@ -31,11 +32,45 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <h1>Dashboard</h1>
-        <button onClick={e => this.handleLogout()} >Se déconnecter</button>          
+        
+        <nav className="nav-bar" >
+          <h1>Dashboard</h1>
+          <div className="separator"></div>
+          <ul>
+            <li><NavLink exact to='/dashboard'> <i className="glyphicon glyphicon-pencil"></i>Formulaire de déposition </NavLink></li>
+            <li><NavLink to="/dashboard/liste-depositions"> <i className="glyphicon glyphicon-list"></i> Listes des dépositions </NavLink></li>
+            <li><NavLink to="/dashboard/ajout-utilisateur"> <i className="glyphicon glyphicon-user"></i> Création d'utilisateur </NavLink></li>
+            <li><NavLink to="/dashboard/configuration"> <i className="glyphicon glyphicon-cog"></i> Configuration </NavLink></li>
+            <li onClick={e => this.handleLogout()}><i className="glyphicon glyphicon-log-out"></i> Se déconnecté</li> 
+          </ul>
+        </nav> 
+        <div className="content">
+          <Switch>
+            <Route exact path="/dashboard" render={() => {
+              return(
+                <h1>ajout-deposition</h1>
+              );
+            }} />
+            <Route exact path="/dashboard/liste-depositions"  render={() => {
+              return(
+                <h1>liste-depositions</h1>
+              )
+            }} />
+            <Route exact path="/dashboard/ajout-utilisateur" render={() => {
+              return(
+                <h1>ajout-utilisateur</h1>
+              )
+            }} />
+            <Route exact path="/dashboard/configuration" render={() => {
+              return(
+                <h1>configuration</h1>
+              )
+            }} />      
+          </Switch>
+        </div>         
       </div>
     );
   }
 }
-
+ 
 export default Dashboard;

@@ -7,7 +7,7 @@
     "start": "node server",
     "start-dev": "nodemon server",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run start-dev\" \"npm run client\""
+    "dev": "concurrently \"npm run start\" \"npm run client\""
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
