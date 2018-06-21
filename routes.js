@@ -2,6 +2,9 @@ const express = require('express');
 const passport = require('passport');
 
 const User = require('./models/user');
+const Deposition = require('./models/deposition');
+const Personne = require('./models/personne');
+
 
 const router = express.Router();
 
@@ -31,6 +34,29 @@ router.get('/current-user', function(req, res) {
     return res.json(req.user);
   }
   res.status(404).send(null);
+});
+
+router.post('/new-person', function(req, res, next){
+  Personne.findOne({nom: req.body.nom, prenom: req.body.prenom }).exec(function(err, person){
+    if(person) return res.json({id: person._id});
+    (new Personne(req.body)).save(function(err, newPerson){
+      if(err) return next(err);
+      res.json({id: newPerson._id})
+    });
+  });
+});
+
+router.post('/new-depo/:personId', function(req, res, next){
+  Personne.findById(req.params.personId).exec(function(err, person){
+    if(err) next(err);
+    (new Deposition({
+      ...req.body,
+      user: req.user._id,
+      personne: person._id 
+    })).save(function(err){
+      res.status(200).end();
+    });
+  });
 });
 
 module.exports = router;

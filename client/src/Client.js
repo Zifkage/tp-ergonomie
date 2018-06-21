@@ -26,8 +26,30 @@ const getUser = function(cb){
   });
 }
 
+const newDepo = function(personId, depo, cb){
+  request.post({
+    url: uri + 'new-depo/' + personId,
+    form: depo
+  }, function(err, res, body){
+    cb(err, res.statusCode, body)
+  });
+}
+
+const newPerson = function(person, cb){
+  request.post({
+    url: uri + 'new-person',
+    form: person
+  }, function(err, res, body){
+    cb(err, res.statusCode, body)
+  });
+}
+
+
+
 export default {
   login,
   logout,
-  getUser
+  getUser,
+  newDepo,
+  newPerson
 }

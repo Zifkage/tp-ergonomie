@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import client from '../../Client';
 import { Redirect, Route, Switch, NavLink } from 'react-router-dom';
 
+import AddDepo from '../AddDepo/AddDepo';
 
 class Dashboard extends Component {
 
@@ -46,11 +47,7 @@ class Dashboard extends Component {
         </nav> 
         <div className="content">
           <Switch>
-            <Route exact path="/dashboard" render={() => {
-              return(
-                <h1>ajout-deposition</h1>
-              );
-            }} />
+            <Route exact path="/dashboard" component={AddDepo}/>
             <Route exact path="/dashboard/liste-depositions"  render={() => {
               return(
                 <h1>liste-depositions</h1>
